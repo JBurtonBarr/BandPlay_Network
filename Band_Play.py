@@ -28,4 +28,20 @@ model.add(tf.keras.layers.Flatten())
 model.add(tf.keras.layers.Dense(256, activation = tf.nn.relu))
 model.add(tf.keras.layers.Dense(256, activation = tf.nn.relu))
 model.add(tf.keras.layers.Dense(10, activation = tf.nn.softmax))
-   # output layer = number of possible outcomes 
+   # output layer = number of possible outcomes
+   # softmax - normalises the output to a probability distribution
+       # causes a within 0-1 interval distribution
+
+model.compile(optimizer = 'adam', loss= 'sparse_categorical_crossentrophy',
+              metrics = ['accuracy'])
+        #Add more metrics and compare optimizer
+model.fit(x_train, y_train, epochs = 3)
+
+#At this stage I want to optimise generalizability
+
+loss, acc = model.evaluation(x_test, y_test)
+print("Loss = " + loss + "\n" + "Accuracy = " + acc)
+
+
+#model.save('thats_numberwang.model')
+#Look into predictions (x.predict([test])
