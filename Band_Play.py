@@ -1,6 +1,6 @@
 #Neural Network Band Test
 import tensorflow as tf
-import matplotlib as plt
+import matplotlib.pyplot as plt
 
 num_rec = tf.keras.datasets.mnist #Dataset including handwritten numbers 0-9
  # Stick to these now and upgrade the system later
@@ -25,14 +25,14 @@ model = tf.keras.models.Sequential()
 model.add(tf.keras.layers.Flatten())
   #Clean up mess
 
-model.add(tf.keras.layers.Dense(256, activation = tf.nn.relu))
-model.add(tf.keras.layers.Dense(256, activation = tf.nn.relu))
+model.add(tf.keras.layers.Dense(64, activation = tf.nn.relu))
+model.add(tf.keras.layers.Dense(64, activation = tf.nn.relu))
 model.add(tf.keras.layers.Dense(10, activation = tf.nn.softmax))
    # output layer = number of possible outcomes
    # softmax - normalises the output to a probability distribution
        # causes a within 0-1 interval distribution
 
-model.compile(optimizer = 'adam', loss= 'sparse_categorical_crossentrophy',
+model.compile(optimizer = 'adam', loss= 'sparse_categorical_crossentropy',
               metrics = ['accuracy'])
         #Add more metrics and compare optimizer
 model.fit(x_train, y_train, epochs = 3)
@@ -40,8 +40,8 @@ model.fit(x_train, y_train, epochs = 3)
 #At this stage I want to optimise generalizability
 
 loss, acc = model.evaluation(x_test, y_test)
-print("Loss = " + loss + "\n" + "Accuracy = " + acc)
+#print("Loss = " + loss + "\n" + "Accuracy = " + acc)
 
 
 #model.save('thats_numberwang.model')
-#Look into predictions (x.predict([test])
+predictions = (x.predict([test]))
