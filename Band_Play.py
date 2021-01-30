@@ -44,8 +44,8 @@ model.add(tf.keras.layers.Flatten())
 
 print("Reach: 6")
 
-model.add(tf.keras.layers.Dense(32, activation = tf.nn.relu))
-model.add(tf.keras.layers.Dense(32, activation = tf.nn.relu))
+model.add(tf.keras.layers.Dense(20, activation = tf.nn.relu))
+#model.add(tf.keras.layers.Dense(16, activation = tf.nn.relu))
 model.add(tf.keras.layers.Dense(10, activation = tf.nn.softmax))
    # output layer = number of possible outcomes
    # softmax - normalises the output to a probability distribution
@@ -58,7 +58,7 @@ model.compile(optimizer = 'adam', loss= 'sparse_categorical_crossentropy',
         #Add more metrics and compare optimizer
 print("Reach: 8")
 
-model.fit(x_train, y_train, epochs = 3)
+model.fit(x_train, y_train, epochs = 1)
 
 
 print("Reach: 9")
@@ -71,4 +71,4 @@ print("Reach: 9")
 model.save('thats_numberwang.model')
 print("Reach: Saved")
 
-predictions = (x.predict([test]))
+#predictions = (x.predict([test]))
